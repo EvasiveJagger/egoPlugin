@@ -40,31 +40,31 @@ public abstract class AbstractEgo {
      * This will tick every tick for the player that has the ego. This is used to update the ego's state and perform any actions that need to be done every tick.
      * @param user The player that has the ego.
      */
-    public abstract void onTick(Player user);
+    public void onTick(Player user) {}
 
     /**
      * This will be called when the player uses the ego on an entity. This is used to perform any actions that need to be done when the player uses the ego.
      * @param event The event that is called when the player uses the ego on an entity.
      */
-    public abstract void onUse(PlayerInteractEntityEvent event);
+    public void onUse(PlayerInteractEntityEvent event) {}
 
     /**
      * This will be called when the player hits an entity with the ego. This is used to perform any actions that need to be done when the player hits an entity with the ego.
      * @param event The event that is called when the player hits an entity with the ego.
      */
-    public abstract void onHit(EntityDamageByEntityEvent event);
+    public void onHit(EntityDamageByEntityEvent event) {}
 
     /**
      * This will be called when the player is hit by an entity with the ego. This is used to perform any actions that need to be done when the player is hit by an entity with the ego.
      * @param event The event that is called when the player is hit by an entity with the ego.
      */
-    public abstract void onHurt(EntityDamageByEntityEvent event);
+    public void onHurt(EntityDamageByEntityEvent event) {}
 
     /**
      * This will be called when the player dies with the ego. This is used to perform any actions that need to be done when the player dies with the ego.
      * @param event The event that is called when the player dies with the ego.
      */
-    public abstract void onDeath(EntityDamageByEntityEvent event);
+    public void onDeath(EntityDamageByEntityEvent event) {}
 
     /**
      * This is used to register any custom event handlers for the ego.

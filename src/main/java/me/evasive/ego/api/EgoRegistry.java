@@ -15,6 +15,9 @@ public class EgoRegistry {
         if (registeredEgos.contains(ego)) {
             throw new IllegalArgumentException("Ego already registered: " + ego.getName());
         }
+        if (frozen) {
+            throw new IllegalStateException("Cannot register Egos after the registry has been frozen.");
+        }
         ego.register();
         registeredEgos.add(ego);
     }
