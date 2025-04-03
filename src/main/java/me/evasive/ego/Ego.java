@@ -9,9 +9,12 @@ public class Ego extends JavaPlugin {
 
     private NamespacedKeyRegistry keyRegistry;
     private EgoRegistry egoRegistry;
+
     @Override
     public void onEnable() {
         instance = this;
+
+        getServer().getPluginManager().registerEvents(new testingClass(), this);
 
         keyRegistry = new NamespacedKeyRegistry();
         egoRegistry = new EgoRegistry();
