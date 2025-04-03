@@ -1,0 +1,4 @@
+name: Ego
+version: '0.1'
+main: me.evasive.ego.Ego
+api-version: '1.21'
