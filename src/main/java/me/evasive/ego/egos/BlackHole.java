@@ -17,7 +17,7 @@ public class BlackHole extends AbstractEgo {
 
     @Override
     public TextComponent getObtainedMessage() {
-        return Component.text("Turns out no one's come to save you...Kehehe.");
+        return Component.text("Turns out no one's come to save you... from my all-consuming gravity.");
     }
 
     @Override

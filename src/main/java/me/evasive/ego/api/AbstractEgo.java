@@ -119,7 +119,7 @@ public abstract class AbstractEgo {
         public void onEntityDamage(EntityDamageByEntityEvent event) {
             if (event.getEntity() instanceof Player) {
                 Player player = (Player) event.getEntity();
-                if (player.getInventory().getItemInMainHand().isSimilar(ego.getItem())) {
+                if (player.getInventory().getItemInMainHand().isSimilar(ego.getItem())) { // Oy moon can u change this to whether the EGO is in their inv? Cause ppl will still be fighting w swords so wont be holding item. Thanks, Janis
                     ego.onHurt(event);
                 }
             }
