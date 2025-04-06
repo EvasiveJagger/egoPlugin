@@ -31,16 +31,16 @@ public class BlackHolePull extends BukkitRunnable {
 
             Vector3d changeVector = new Vector3d(userLocVector);
             changeVector.sub(targetLocVector);
-
+            //if the user was at the coords 1,1,1 and the target was at the coords 2,2,2 the sub would make the change vector -1,-1,-1, which is the distance that the target needs to go to reach the user
             //grav formula is F = G(m1 * m2) / r^2
             //which means that the force decreases by the distance squared
-
-            changeVector.mul(100); // multiply the force by mass cause we're assuming that the user is a fatass, might have to adjust this.
+            double power = 100; //need to test
+            changeVector.mul(power); // multiply the force by mass cause we're assuming that the user is a fatass, might have to adjust this.
 
             double dist = targetLoc.distanceSquared(targetLoc); //squares the distance
 
             changeVector.div(dist); //divide the vector by distance^2,
-            //if the user was at the coords 1,1,1 and the target was at the coords 2,2,2 the sub would make the change vector -1,-1,-1, which is the distance that the target needs to go to reach the user
+
 
 
 
