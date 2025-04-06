@@ -3,6 +3,7 @@ package me.evasive.ego.egos;
 import me.evasive.ego.api.AbstractEgo;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
@@ -22,7 +23,7 @@ public class DimensionShredder extends AbstractEgo {
 
     @Override
     public ItemStack getItem() {
-        return null;
+        return new ItemStack(Material.OBSIDIAN);
     }
 
     @Override
