@@ -30,6 +30,11 @@ public class BlackHole extends AbstractEgo {
         return List.of();
     }
 
+    @Override
+    public boolean isRollable() {
+        return true;
+    }
+
     //thank u zach this is really convenient
 
     //For about 70 ticks, make movement vectors towards a specific player,

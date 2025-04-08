@@ -46,31 +46,37 @@ public abstract class AbstractEgo {
      * This will be called when the player uses the ego on an entity. This is used to perform any actions that need to be done when the player uses the ego.
      * @param event The event that is called when the player uses the ego on an entity.
      */
-    public void onUse(PlayerInteractEntityEvent event) {}
+    public void onUse(PlayerInteractEntityEvent event, boolean holding) {}
 
     /**
      * This will be called when the player hits an entity with the ego. This is used to perform any actions that need to be done when the player hits an entity with the ego.
      * @param event The event that is called when the player hits an entity with the ego.
      */
-    public void onHit(EntityDamageByEntityEvent event) {}
+    public void onHit(EntityDamageByEntityEvent event, boolean holding) {}
 
     /**
      * This will be called when the player is hit by an entity with the ego. This is used to perform any actions that need to be done when the player is hit by an entity with the ego.
      * @param event The event that is called when the player is hit by an entity with the ego.
      */
-    public void onHurt(EntityDamageByEntityEvent event) {}
+    public void onHurt(EntityDamageByEntityEvent event, boolean holding) {}
 
     /**
      * This will be called when the player dies with the ego. This is used to perform any actions that need to be done when the player dies with the ego.
      * @param event The event that is called when the player dies with the ego.
      */
-    public void onDeath(EntityDamageByEntityEvent event) {}
+    public void onDeath(EntityDamageByEntityEvent event, boolean holding) {}
 
     /**
      * This is used to register any custom event handlers for the ego.
      * @return A list of custom event handlers to register for the ego.
      */
     public abstract List<Listener> getHandlers();
+
+    /**
+     * This will dictate weather you can roll to get this ego
+     * @return true if you can roll for this ego, false if you cannot.
+     */
+    public abstract boolean isRollable();
 
     /**
      * Note: Do not override this method. This is used to register the ego with the plugin.
@@ -102,16 +108,16 @@ public abstract class AbstractEgo {
 
         @EventHandler
         public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
-            if (event.getPlayer().getInventory().getItemInMainHand().isSimilar(ego.getItem())) {
-                ego.onUse(event);
+            if (event.getPlayer().getInventory().contains(ego.getItem())) {
+                ego.onUse(event, event.getPlayer().getActiveItem().equals(ego.getItem()));
             }
         }
         @EventHandler
         public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
             if (event.getDamager() instanceof Player) {
                 Player player = (Player) event.getDamager();
-                if (player.getInventory().getItemInMainHand().isSimilar(ego.getItem())) {
-                    ego.onHit(event);
+                if (player.getInventory().contains(ego.getItem())) {
+                    ego.onHit(event, player.getActiveItem().equals(ego.getItem()));
                 }
             }
         }
@@ -119,8 +125,8 @@ public abstract class AbstractEgo {
         public void onEntityDamage(EntityDamageByEntityEvent event) {
             if (event.getEntity() instanceof Player) {
                 Player player = (Player) event.getEntity();
-                if (player.getInventory().getItemInMainHand().isSimilar(ego.getItem())) { // Oy moon can u change this to whether the EGO is in their inv? Cause ppl will still be fighting w swords so wont be holding item. Thanks, Janis
-                    ego.onHurt(event);
+                if (player.getInventory().contains(ego.getItem())) {
+                    ego.onHurt(event, player.getActiveItem().equals(ego.getItem()));
                 }
             }
         }
@@ -128,8 +134,8 @@ public abstract class AbstractEgo {
         public void onEntityDeath(EntityDamageByEntityEvent event) {
             if (event.getEntity() instanceof Player) {
                 Player player = (Player) event.getEntity();
-                if (player.getInventory().getItemInMainHand().isSimilar(ego.getItem())) {
-                    ego.onDeath(event);
+                if (player.getInventory().contains(ego.getItem())) {
+                    ego.onDeath(event, player.getActiveItem().equals(ego.getItem()));
                 }
             }
         }

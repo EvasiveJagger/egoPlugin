@@ -30,6 +30,11 @@ public class DimensionShredder extends AbstractEgo {
         return List.of();
     }
 
+    @Override
+    public boolean isRollable() {
+        return true;
+    }
+
     //Blink: Instantly teleport where you're looking. If looking at a player, teleport behind and above them for a crit. Dimensional Travel: Puts you at the same coords on the nether roof, after a bit tp you back
     @Override
     public void onTick(Player user) {

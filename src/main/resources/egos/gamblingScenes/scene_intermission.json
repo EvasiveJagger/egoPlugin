@@ -1,0 +1,20 @@
+{
+  "odds": 0,
+  "blocks": [
+    [
+      ["AIR", "AIR", "AIR"],
+      ["AIR", "AIR", "AIR"],
+      ["AIR", "AIR", "AIR"]
+    ],
+    [
+      ["AIR", "AIR", "AIR"],
+      ["AIR", "CENTER_AIR", "AIR"],
+      ["AIR", "AIR", "AIR"]
+    ],
+    [
+      ["STONE", "STONE", "STONE"],
+      ["STONE", "STONE", "STONE"],
+      ["STONE", "STONE", "STONE"]
+    ]
+  ]
+}
